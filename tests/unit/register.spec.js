@@ -9,4 +9,18 @@ describe('register.vue', () => {
     expect(wrapper.find('input.email').exists()).toBeTruthy();
     expect(wrapper.find('button.submit').exists()).toBeTruthy();
   });
+
+  it('Given 用户访问注册页面， When 输入期望的用户数据，Then vm.user 与输入的数据相同', () => {
+    const wrapper = shallowMount(Register);
+    const expectResult = {
+      username: '谢小呆',
+      password: '123',
+      email: '123@abc.com',
+    };
+    wrapper.find('input.username').setValue(expectResult.username);
+    wrapper.find('input.password').setValue(expectResult.password);
+    wrapper.find('input.email').setValue(expectResult.email);
+
+    expect(wrapper.vm.user).toEqual(expectResult);
+  });
 });

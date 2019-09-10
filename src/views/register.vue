@@ -1,5 +1,10 @@
 <script>
 export default {
+  data() {
+    return {
+      user: {},
+    };
+  },
 };
 </script>
 
@@ -8,17 +13,17 @@ export default {
     <ul>
       <li>
         <label>
-          <span>用户名：</span><input type="text" name="" class="username">
+          <span>用户名：</span><input type="text" v-model="user.username" class="username">
         </label>
       </li>
       <li>
         <label>
-          <span>密码：</span><input type="password" name="" class="password">
+          <span>密码：</span><input type="password" v-model="user.password" class="password">
         </label>
       </li>
       <li>
         <label>
-          <span>邮箱：</span><input type="text" name="" class="email">
+          <span>邮箱：</span><input type="text" v-model="user.email" class="email">
         </label>
       </li>
       <li>
