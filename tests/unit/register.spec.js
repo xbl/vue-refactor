@@ -1,5 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import Register from '@/views/register.vue';
+import sinon from 'sinon';
 
 describe('register.vue', () => {
   it('When 用户访问注册页面，Then 看到用户名、邮箱和提交按钮', () => {
@@ -54,5 +55,14 @@ describe('register.vue', () => {
     expect(wrapper.find('.username').classes().includes('invalid')).toBe(false);
     expect(wrapper.find('.password').classes().includes('invalid')).toBe(false);
     expect(wrapper.find('.email').classes().includes('invalid')).toBe(false);
+  });
+
+  it('Given 用户访问注册页面， When 点击 submit 按钮，Then 调用 onSubmit', () => {
+    const wrapper = shallowMount(Register);
+    const onSubmitStub = sinon.stub();
+    wrapper.setMethods({ onSubmit: onSubmitStub });
+    wrapper.find('button.submit').trigger('click');
+
+    expect(onSubmitStub.called).toBe(true);
   });
 });

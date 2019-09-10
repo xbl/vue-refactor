@@ -18,6 +18,9 @@ export default {
     checkEmail() {
       this.emailInvalid = !/^[\w]+@[\w]+\.[\w]+$/.test(this.user.email || '');
     },
+    onSubmit() {
+      alert('submit!');
+    },
   },
 };
 </script>
@@ -44,7 +47,7 @@ export default {
         <div class="invalid-tip">请输入正确的邮箱</div>
       </li>
       <li>
-        <button class="submit">保存</button>
+        <button class="submit" @click="onSubmit">保存</button>
       </li>
     </ul>
   </div>
