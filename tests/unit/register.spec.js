@@ -1,6 +1,6 @@
+import sinon from 'sinon';
 import { shallowMount } from '@vue/test-utils';
 import Register from '@/views/register.vue';
-import sinon from 'sinon';
 
 describe('register.vue', () => {
   it('When 用户访问注册页面，Then 看到用户名、邮箱和提交按钮', () => {
@@ -61,8 +61,33 @@ describe('register.vue', () => {
     const wrapper = shallowMount(Register);
     const onSubmitStub = sinon.stub();
     wrapper.setMethods({ onSubmit: onSubmitStub });
+
+    const usernameInput = wrapper.find('.username input');
+    usernameInput.setValue('谢小呆');
+    usernameInput.trigger('blur');
+
+    const passwordInput = wrapper.find('.password input');
+    passwordInput.setValue('123');
+    passwordInput.trigger('blur');
+
+    const emailInput = wrapper.find('.email input');
+    emailInput.setValue('123@sina.com');
+    emailInput.trigger('blur');
+
     wrapper.find('button.submit').trigger('click');
 
     expect(onSubmitStub.called).toBe(true);
+  });
+
+  it('Given 用户访问注册页面， When 点击 submit 按钮，Then 调用 onSubmit', () => {
+    const wrapper = shallowMount(Register);
+    const onSubmitStub = sinon.stub();
+    wrapper.setMethods({ onSubmit: onSubmitStub });
+    const button = wrapper.find('button.submit');
+
+    expect(button.attributes('disabled')).toEqual('disabled');
+
+    button.trigger('click');
+    expect(onSubmitStub.called).toBe(false);
   });
 });
