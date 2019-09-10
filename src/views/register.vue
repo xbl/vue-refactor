@@ -10,13 +10,13 @@ export default {
   },
   methods: {
     checkUsername() {
-      this.usernameInvalid = !/^\w{1,}$/.test(this.user.username);
+      this.usernameInvalid = !/^\w{1,}$/.test(this.user.username || '');
     },
     checkPassword() {
-      this.passwordInvalid = !/^\w{3,}$/.test(this.user.password);
+      this.passwordInvalid = !/^\w{3,}$/.test(this.user.password || '');
     },
     checkEmail() {
-      this.emailInvalid = !/^[\w]+@[\w]+\.[\w]+$/.test(this.user.email);
+      this.emailInvalid = !/^[\w]+@[\w]+\.[\w]+$/.test(this.user.email || '');
     },
   },
 };
