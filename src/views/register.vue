@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     checkUsername() {
-      this.usernameInvalid = !/^\w{1,}$/.test(this.user.username || '');
+      this.usernameInvalid = !/^[\w\u4e00-\u9fa5]+$/.test(this.user.username || '');
     },
     checkPassword() {
       this.passwordInvalid = !/^\w{3,}$/.test(this.user.password || '');

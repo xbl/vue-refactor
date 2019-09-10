@@ -31,9 +31,9 @@ describe('register.vue', () => {
     wrapper.find('.password input').trigger('blur');
     wrapper.find('.email input').trigger('blur');
 
-    expect(wrapper.find('.username > .invalid-tip').isVisible()).toBe(true);
-    expect(wrapper.find('.password > .invalid-tip').isVisible()).toBe(true);
-    expect(wrapper.find('.email > .invalid-tip').isVisible()).toBe(true);
+    expect(wrapper.find('.username').classes().includes('invalid')).toBe(true);
+    expect(wrapper.find('.password').classes().includes('invalid')).toBe(true);
+    expect(wrapper.find('.email').classes().includes('invalid')).toBe(true);
   });
 
   it('Given 用户访问注册页面， When 入合法数据 And 触发验证，Then 不显示验证提示', () => {
@@ -51,8 +51,8 @@ describe('register.vue', () => {
     emailInput.setValue('123@sina.com');
     emailInput.trigger('blur');
 
-    expect(wrapper.find('.username > .invalid-tip').isVisible()).toBe(false);
-    expect(wrapper.find('.password > .invalid-tip').isVisible()).toBe(false);
-    expect(wrapper.find('.email > .invalid-tip').isVisible()).toBe(false);
+    expect(wrapper.find('.username').classes().includes('invalid')).toBe(false);
+    expect(wrapper.find('.password').classes().includes('invalid')).toBe(false);
+    expect(wrapper.find('.email').classes().includes('invalid')).toBe(false);
   });
 });
