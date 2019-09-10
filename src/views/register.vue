@@ -13,19 +13,19 @@ export default {
     <ul>
       <li class="field username">
         <label>
-          <span>用户名：</span><input type="text" v-model="user.username" class="username">
+          <span>用户名：</span><input type="text" v-model="user.username">
         </label>
         <div class="invalid-tip">请输入正确的用户名</div>
       </li>
       <li class="field password">
         <label>
-          <span>密码：</span><input type="password" v-model="user.password" class="password">
+          <span>密码：</span><input type="password" v-model="user.password">
         </label>
         <div class="invalid-tip">请输入正确的密码</div>
       </li>
       <li class="field email">
         <label>
-          <span>邮箱：</span><input type="text" v-model="user.email" class="email">
+          <span>邮箱：</span><input type="text" v-model="user.email">
         </label>
         <div class="invalid-tip">请输入正确的邮箱</div>
       </li>

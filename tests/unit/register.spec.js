@@ -4,9 +4,9 @@ import Register from '@/views/register.vue';
 describe('register.vue', () => {
   it('When 用户访问注册页面，Then 看到用户名、邮箱和提交按钮', () => {
     const wrapper = shallowMount(Register);
-    expect(wrapper.find('input.username').exists()).toBeTruthy();
-    expect(wrapper.find('input.password').exists()).toBeTruthy();
-    expect(wrapper.find('input.email').exists()).toBeTruthy();
+    expect(wrapper.find('.username input').exists()).toBeTruthy();
+    expect(wrapper.find('.password input').exists()).toBeTruthy();
+    expect(wrapper.find('.email input').exists()).toBeTruthy();
     expect(wrapper.find('button.submit').exists()).toBeTruthy();
   });
 
@@ -17,9 +17,9 @@ describe('register.vue', () => {
       password: '123',
       email: '123@abc.com',
     };
-    wrapper.find('input.username').setValue(expectResult.username);
-    wrapper.find('input.password').setValue(expectResult.password);
-    wrapper.find('input.email').setValue(expectResult.email);
+    wrapper.find('.username input').setValue(expectResult.username);
+    wrapper.find('.password input').setValue(expectResult.password);
+    wrapper.find('.email input').setValue(expectResult.email);
 
     expect(wrapper.vm.user).toEqual(expectResult);
   });
@@ -27,9 +27,9 @@ describe('register.vue', () => {
   it('Given 用户访问注册页面， When 未输入数据 And 触发验证，Then 显示验证提示', () => {
     const wrapper = shallowMount(Register);
 
-    wrapper.find('input.username').trigger('blur');
-    wrapper.find('input.password').trigger('blur');
-    wrapper.find('input.email').trigger('blur');
+    wrapper.find('.username input').trigger('blur');
+    wrapper.find('.password input').trigger('blur');
+    wrapper.find('.email input').trigger('blur');
 
     expect(wrapper.find('.username > .invalid-tip').isVisible()).toBe(true);
     expect(wrapper.find('.password > .invalid-tip').isVisible()).toBe(true);
