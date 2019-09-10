@@ -23,4 +23,16 @@ describe('register.vue', () => {
 
     expect(wrapper.vm.user).toEqual(expectResult);
   });
+
+  it('Given 用户访问注册页面， When 未输入数据 And 触发验证，Then 显示验证提示', () => {
+    const wrapper = shallowMount(Register);
+
+    wrapper.find('input.username').trigger('blur');
+    wrapper.find('input.password').trigger('blur');
+    wrapper.find('input.email').trigger('blur');
+
+    expect(wrapper.find('.username > .invalid-tip').isVisible()).toBe(true);
+    expect(wrapper.find('.password > .invalid-tip').isVisible()).toBe(true);
+    expect(wrapper.find('.email > .invalid-tip').isVisible()).toBe(true);
+  });
 });
