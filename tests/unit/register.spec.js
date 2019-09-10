@@ -35,4 +35,24 @@ describe('register.vue', () => {
     expect(wrapper.find('.password > .invalid-tip').isVisible()).toBe(true);
     expect(wrapper.find('.email > .invalid-tip').isVisible()).toBe(true);
   });
+
+  it('Given 用户访问注册页面， When 入合法数据 And 触发验证，Then 不显示验证提示', () => {
+    const wrapper = shallowMount(Register);
+
+    const usernameInput = wrapper.find('.username input');
+    usernameInput.setValue('谢小呆');
+    usernameInput.trigger('blur');
+
+    const passwordInput = wrapper.find('.password input');
+    passwordInput.setValue('123');
+    passwordInput.trigger('blur');
+
+    const emailInput = wrapper.find('.email input');
+    emailInput.setValue('123@sina.com');
+    emailInput.trigger('blur');
+
+    expect(wrapper.find('.username > .invalid-tip').isVisible()).toBe(false);
+    expect(wrapper.find('.password > .invalid-tip').isVisible()).toBe(false);
+    expect(wrapper.find('.email > .invalid-tip').isVisible()).toBe(false);
+  });
 });
